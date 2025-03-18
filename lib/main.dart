@@ -1,37 +1,48 @@
 import 'package:flutter/material.dart';
 import 'pages/homepage.dart';
+import 'pages/savedpage.dart';
+import 'pages/menupage.dart';
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _selectedIndex = 0;
+
+List<Widget> pages = const[
+    Homepage(),
+    Savedpage(),
+    Menupage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Self Improvement Diy',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      home: Scaffold(
+
+        body: pages[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          selectedItemColor: Colors.black,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.bookmark_outline), label: "Saved"),
+            BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Menu"),
+          ],
+        ),
       ),
-      home:  Homepage(),
     );
   }
 }

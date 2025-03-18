@@ -6,36 +6,15 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
-        backgroundColor: const Color.fromARGB(255, 243, 243, 250),
-        flexibleSpace: Padding(
-          padding: EdgeInsets.only(bottom: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Row(
-                children: [
-                  IconButton(icon: Icon(Icons.menu), onPressed: () {}),
-                  Container(
-                    margin: EdgeInsets.only(left: 95),
-                    child: Text('Homepage', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("All"), 
-                  Text("New"),
-                  Text("Saved"),
-                ],
-              ),
-            ],
-          ),
+        flexibleSpace: Stack( children: [
+        Positioned(
+          top: 80,
+          left: 90,
+          child: Text("Self Improvement Diys", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),))]
         ),
       ),
       body: Center(
-        child: Column(
+        child: SingleChildScrollView( child:  Column(
           children:[ 
           
 
@@ -158,7 +137,7 @@ class Homepage extends StatelessWidget {
               ],
             ),
           ),
-  ]),
+  ])),
       ),
     );
   }
