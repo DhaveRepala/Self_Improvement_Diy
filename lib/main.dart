@@ -38,6 +38,7 @@ List<Widget> pages = const[
             setState(() {
               _selectedIndex = index;
             });
+            
           },
           selectedItemColor: Colors.black,
           items: const [
