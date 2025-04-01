@@ -1,73 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/selfCategory/selfcategorypage.dart';
-import 'homepageCategories/homediys.dart';
+import 'hairstylepage.dart';
 import 'package:google_fonts/google_fonts.dart';
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class SelfCategoryPage extends StatelessWidget {
+  final Function(Widget) onNavigate; // Callback to handle navigation
 
-  @override
-  State<Homepage> createState() => _HomepageState();
-}
-
-class _HomepageState extends State<Homepage> {
-  Widget _currentBody = const HomeMainPage(); // Default body is the main homepage
-
-  void _navigateToSubcategory(Widget subcategory) {
-    setState(() {
-      _currentBody = subcategory; // Update the body to the selected subcategory
-    });
-  }
+  const SelfCategoryPage({super.key, required this.onNavigate});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title:  Text("ImproveMEnt",style: GoogleFonts.smoochSans(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w400,
-                      color: const Color.fromARGB(255, 94, 87, 87),)),
-        leading: _currentBody is! HomeMainPage
-            ? IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  setState(() {
-                    _currentBody = const HomeMainPage(); // Go back to the main homepage
-                  });
-                },
-              )
-            : null,
-      ),
-      body: _currentBody, // Render the current body
-    );
-  }
-}
-
-class HomeMainPage extends StatelessWidget {
-  const HomeMainPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final homepageState = context.findAncestorStateOfType<_HomepageState>();
-
     return Center(
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // Navigate to HomeDiys
+            // Navigate to HairstylePage
             InkWell(
               onTap: () {
-                homepageState?._navigateToSubcategory(const HomeDiys());
+                onNavigate(const Hairstylepage()); // Use the callback to navigate
               },
-              child: 
-
-            Container(
+              child: Container(
               margin: EdgeInsets.only(top: 20),
               height: 200,
               width: 350,
               decoration: BoxDecoration(
                  borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                  image: AssetImage('assets/image.png'),
+                  image: AssetImage('assets/barber.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -88,36 +45,29 @@ class HomeMainPage extends StatelessWidget {
                   Positioned(
                     bottom: 10,
                     left: 10,
-                    child: Text('Home',
-                     style: GoogleFonts.dmSerifText(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,),
-              ))],
+                    child: Text('Hairstyle',
+                       style: GoogleFonts.dmSerifText(
+              fontSize: 28,
+              fontWeight: FontWeight.w400,
+              color: Colors.white,
+            ))),
+                ],
               ),
             ),
             ),
-            // Navigate to SelfCategoryPage
+            // Navigate to Dress Styling
             InkWell(
               onTap: () {
-                homepageState?._navigateToSubcategory(
-                  SelfCategoryPage(
-                    onNavigate: (subcategory) {
-                      homepageState._navigateToSubcategory(subcategory);
-                    },
-                  ),
-                );
+                onNavigate(const Hairstylepage()); // Use the callback to navigate
               },
-              child: 
-
-            Container(
+              child: Container(
               margin: EdgeInsets.only(top: 20),
               height: 200,
               width: 350,
               decoration: BoxDecoration(
                  borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                  image: AssetImage('assets/suit.png'),
+                  image: AssetImage('assets/dressStyle.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -138,12 +88,12 @@ class HomeMainPage extends StatelessWidget {
                   Positioned(
                     bottom: 10,
                     left: 10,
-                    child: Text('Self',
-                     style: GoogleFonts.dmSerifText(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                     ),)),
+                    child: Text('Dress Styling',
+                      style: GoogleFonts.dmSerifText(
+              fontSize: 28,
+              fontWeight: FontWeight.w400,
+              color: Colors.white,
+            )),),
                 ],
               ),
             ),
@@ -156,7 +106,7 @@ class HomeMainPage extends StatelessWidget {
               decoration: BoxDecoration(
                  borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                  image: AssetImage('assets/others.png'),
+                  image: AssetImage('assets/skincare.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -177,12 +127,12 @@ class HomeMainPage extends StatelessWidget {
                   Positioned(
                     bottom: 10,
                     left: 10,
-                    child: Text('Others',
-                    style: GoogleFonts.dmSerifText(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white
-                    ),)),
+                    child: Text('Skin Care',
+                     style: GoogleFonts.dmSerifText(
+              fontSize: 28,
+              fontWeight: FontWeight.w400,
+              color: Colors.white,
+            ),)),
                 ],
               ),
             ),
