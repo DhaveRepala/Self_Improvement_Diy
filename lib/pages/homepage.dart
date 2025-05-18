@@ -1,6 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/homepageCategories/homecategorypage.dart';
 import 'package:flutter_application_1/pages/selfCategory/selfcategorypage.dart';
-import 'homepageCategories/homediys.dart';
 import 'package:google_fonts/google_fonts.dart';
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -56,9 +58,15 @@ class HomeMainPage extends StatelessWidget {
             // Navigate to HomeDiys
             InkWell(
               onTap: () {
-                homepageState?._navigateToSubcategory(const HomeDiys());
+                homepageState?._navigateToSubcategory(
+                  HomeCategoryPage(
+                    onNavigate: (subcategory) {
+                      homepageState._navigateToSubcategory(subcategory);
+                    },
+                  ),
+                );
               },
-              child: 
+            child: 
 
             Container(
               margin: EdgeInsets.only(top: 20),

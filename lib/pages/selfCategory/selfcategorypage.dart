@@ -1,5 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'hairstylepage.dart';
+import 'dressStylingPage.dart';
 import 'package:google_fonts/google_fonts.dart';
 class SelfCategoryPage extends StatelessWidget {
   final Function(Widget) onNavigate; // Callback to handle navigation
@@ -58,7 +61,7 @@ class SelfCategoryPage extends StatelessWidget {
             // Navigate to Dress Styling
             InkWell(
               onTap: () {
-                onNavigate(const Hairstylepage()); // Use the callback to navigate
+                onNavigate(const Dressstylingpage()); // Use the callback to navigate
               },
               child: Container(
               margin: EdgeInsets.only(top: 20),
@@ -99,7 +102,12 @@ class SelfCategoryPage extends StatelessWidget {
             ),
             ),
 
-            Container(
+            // Navigate to Skin Care
+            InkWell(
+              onTap: () {
+                onNavigate(const Dressstylingpage()); // Use the callback to navigate
+              },
+              child: Container(
               margin: EdgeInsets.only(top: 20),
               height: 200,
               width: 350,
@@ -128,13 +136,14 @@ class SelfCategoryPage extends StatelessWidget {
                     bottom: 10,
                     left: 10,
                     child: Text('Skin Care',
-                     style: GoogleFonts.dmSerifText(
+                      style: GoogleFonts.dmSerifText(
               fontSize: 28,
               fontWeight: FontWeight.w400,
               color: Colors.white,
-            ),)),
+            )),),
                 ],
               ),
+            ),
             ),
           ],
         ),
