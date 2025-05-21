@@ -185,7 +185,7 @@ class HomeMainPage extends StatelessWidget {
                   Positioned(
                     bottom: 10,
                     left: 10,
-                    child: Text('Others',
+                    child: Text('Coming Soon',
                     style: GoogleFonts.dmSerifText(
                       fontSize: 28,
                       fontWeight: FontWeight.w400,
